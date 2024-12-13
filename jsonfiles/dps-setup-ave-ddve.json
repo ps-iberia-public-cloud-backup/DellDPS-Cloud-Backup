@@ -1,0 +1,24 @@
+{
+  "avamar": {
+    "useAvamar": "YES",
+    "avamarServerName": "avamar-001.corp",
+    "avamarDrServerName": "avamar-002.corp",
+    "avamarDomain": "EDP/TTTT/PAAS",
+    "avamarClientPort": "28008",
+    "installDir": "dockerclient",
+    "avamarVersion": "19.4",
+    "avamarRetention": "Bronze",
+    "apiUser": "PaaSuser",
+    "apiPassword": "******************"
+  },
+  "datadomain": {
+    "datadomainServerName": "datadomain-001.corp",
+      "mountType": "local",
+      "datadomain_datadomain_RootBackupDir": "Backup",
+      "ddboosfs": {
+        "ddboostuser": "PaaSuser",
+        "storageUnit": "xxxPaaS_backups",
+        "lockboxPass": "4*****************"
+      }
+  }
+}

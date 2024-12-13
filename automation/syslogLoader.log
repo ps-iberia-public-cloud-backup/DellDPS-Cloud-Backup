@@ -1,0 +1,32 @@
+2024-11-14T12:48:02Z:  Process syslog file and insert each entry
+2024-11-14T12:49:11Z: Execute the SQL command inside the PostgreSQL container
+2024-11-14T12:51:59Z: Process syslog file and insert each entry
+2024-11-14T12:53:09Z: Execute the SQL command inside the PostgreSQL container
+2024-11-14T12:55:53Z: Process syslog file and insert each entry
+2024-11-14T12:57:01Z: Execute the SQL command inside the PostgreSQL container
+2024-11-14T12:59:51Z: Process syslog file and insert each entry
+2024-11-14T13:01:01Z: Execute the SQL command inside the PostgreSQL container
+2024-11-14.13:04:43: Process syslog file and insert each entry
+2024-11-14.13:05:26: Process syslog file and insert each entry
+2024-11-14.14:23:25: Process syslog file and insert each entry
+2024-11-14.14:24:27: Process syslog file and insert each entry
+2024-11-14.14:25:36: Execute the SQL command inside the PostgreSQL container
+2024-11-14.14:58:43: Process syslog file and insert each entry
+2024-11-14.15:00:17: Execute the SQL command inside the PostgreSQL container
+2024-11-14.15:01:29: Process syslog file and insert each entry
+2024-11-14.15:03:03: Execute the SQL command inside the PostgreSQL container
+2024-11-14.15:08:14: Process syslog file and insert each entry
+2024-11-14.15:09:48: Execute the SQL command inside the PostgreSQL container
+2024-11-14.15:21:18: Process syslog file and insert each entry
+2024-11-14.15:21:51: Process syslog file and insert each entry
+2024-11-14.15:23:10: Process syslog file and insert each entry
+2024-11-14.15:23:21: Process syslog file and insert each entry
+2024-11-14.15:24:33: Process syslog file and insert each entry
+2024-11-14.15:25:35: Process syslog file and insert each entry
+2024-11-14.15:27:06: Execute the SQL command inside the PostgreSQL container
+2024-11-14.15:43:08: Process syslog file and insert each entry
+2024-11-14.15:44:22: Execute the SQL command inside the PostgreSQL container
+2024-11-14.15:49:38: Process syslog file and insert each entry
+2024-11-14.15:50:52: Execute the SQL command inside the PostgreSQL container
+2024-11-14.16:04:48: Process syslog file and insert each entry
+2024-11-14.16:06:02: Execute the SQL command inside the PostgreSQL container

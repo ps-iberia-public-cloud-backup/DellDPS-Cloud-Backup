@@ -1,0 +1,35 @@
+{
+  "azureLogin": {
+    "resourceGroup": "BackupPaaS",
+    "tenantId": "054bb9ef-86b1-4f4e-a843-deb19d532c11",
+    "ServicePrincipal": {
+      "useServicePrincipal": "YES",
+      "servicePrincipalClientId": "6ad30481-1ec1-43e3-b19d-4195da5451cf",
+      "KeyVaultyes": {
+        "loginKeyVaultName": "keyvaultstd01",
+        "secretSPN": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
+      },
+      "KeyVaultno": {
+        "servicePrincipalClientSecret": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
+      }
+    },
+    "ManagedIdentity": {
+      "useUserAssignedRManagedIdentity": "NO",
+      "ManageIdentityName": "ReaderSTD",
+      "useSystemAssignedManagedIdentity": "NO"
+    },
+    "Credentials": {
+      "useCredentials": "NO",
+      "userName": "",
+      "Password": ""
+    },
+    "subscription": {
+      "changeDefaultsubscription": "NO",
+      "subscriptionID": ""
+    },
+    "azureResources": {
+      "resourceType": "Microsoft.CognitiveServices/accounts",
+      "useAutoDiscover": "NO"
+    }
+  }
+}

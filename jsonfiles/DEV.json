@@ -1,0 +1,25 @@
+{
+"azureLogin": {
+    "tenantId": "35595a02",
+    "ServicePrincipal":  {
+      "useServicePrincipal": "YES",
+      "servicePrincipalClientId": "a8999888574663t3g2",
+      "KeyVaultyes":  { "loginKeyVaultName": "", "secretSPN": "" },
+      "KeyVaultno":  { "servicePrincipalClientSecret": "" }
+    },
+    "ManagedIdentity":  {
+      "useUserAssignedRManagedIdentity": "NO",
+      "ManageIdentityName": "ReaderSTD",
+      "useSystemAssignedManagedIdentity": "NO"
+    },
+    "Credentials":  {
+      "useCredentials": "NO",
+      "userName": "",
+      "Password": ""
+    },
+    "subscription": {
+      "changeDefaultsubscription": "YES",
+      "subscriptionID": "001"
+    }
+  }
+}

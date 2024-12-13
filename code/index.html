@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud and Protection Silo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+        #blob-form, #avamar-form {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+    <script>
+        function showBlobStorageButton() {
+            document.getElementById('blob-button').style.display = 'block';
+        }
+
+        function showBlobStorageForm() {
+            document.getElementById('blob-form').style.display = 'block';
+        }
+
+        function showAvamarForm() {
+            document.getElementById('avamar-form').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Clouds</h2>
+    <button onclick="showBlobStorageButton()">Azure</button>
+    <button>AWS</button>
+    <button>GCP</button>
+    <button>Oracle Cloud</button>
+
+    <button id="blob-button" style="display:none;" onclick="showBlobStorageForm()">Blob Storage</button>
+
+    <div id="blob-form">
+        <h2>Blob Storage Information</h2>
+        <form>
+            <label for="subscription-id">Subscription ID:</label><br>
+            <input type="text" id="subscription-id" name="subscription-id" required><br><br>
+
+            <label for="tenant-id">Tenant ID:</label><br>
+            <input type="text" id="tenant-id" name="tenant-id" required><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <h2>Protection Silo</h2>
+    <button onclick="showAvamarForm()">Avamar</button>
+    <button>Networker</button>
+    <button>Power Protect Data Manager</button>
+    <button>Veeam</button>
+    <button>Commvault</button>
+
+    <div id="avamar-form">
+        <h2>Avamar Server Information</h2>
+        <form>
+            <label for="server">Server:</label><br>
+            <input type="text" id="server" name="server" required><br><br>
+
+            <label for="domain">Domain:</label><br>
+            <input type="text" id="domain" name="domain" required><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
+</html>

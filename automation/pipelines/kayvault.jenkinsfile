@@ -1,0 +1,101 @@
+pipeline {
+    agent any
+
+    environment {
+        CONTAINER_TYPE = "docker"
+        SOURCE_IMAGE = "your-source-image"
+        SOURCE_IMAGE_VERSION = "latest"
+        TARGET_IMAGE = "your-target-image"
+        CONTAINER_INSTALLATION_FOLDER = "/opt/container"
+        PROXY = ""
+        AZ_RESOURCE_GROUP = ""
+        AZ_TENANT_ID = ""
+        AZ_SERVICE_PRINCIPAL_CLIENT_ID = ""
+        AZ_SERVICE_PRINCIPAL_CLIENT_SECRET = ""
+        AZ_SECRET_SPN = ""
+        AZ_SUBSCRIPTION_ID = ""
+        AVAMAR_SERVER_NAME = ""
+        DATADOMAIN_SERVER_NAME = ""
+        CONTAINER_NAME = ""
+        AZ_CONTAINER_NAME = ""
+    }
+
+    stages {
+        stage('Prepare Environment') {
+            steps {
+                script {
+                    // Ensure setup.sh is executable
+                    sh 'chmod +x /path/to/setup.sh'
+                }
+            }
+        }
+
+        stage('Execute setup.sh') {
+            steps {
+                script {
+                    def command = "/path/to/setup.sh --containerType ${CONTAINER_TYPE} " +
+                                  "--sourceImage ${SOURCE_IMAGE} " +
+                                  "--sourceImageVersion ${SOURCE_IMAGE_VERSION} " +
+                                  "--targetImage ${TARGET_IMAGE} " +
+                                  "--containerInstallationFolder ${CONTAINER_INSTALLATION_FOLDER}"
+
+                    if (env.PROXY) {
+                        command += " --proxy ${PROXY}"
+                    }
+                    if (env.AZ_RESOURCE_GROUP) {
+                        command += " --azresourceGroup ${AZ_RESOURCE_GROUP}"
+                    }
+                    if (env.AZ_TENANT_ID) {
+                        command += " --aztenantId ${AZ_TENANT_ID}"
+                    }
+                    if (env.AZ_SERVICE_PRINCIPAL_CLIENT_ID) {
+                        command += " --azservicePrincipalClientId ${AZ_SERVICE_PRINCIPAL_CLIENT_ID}"
+                    }
+                    if (env.AZ_SERVICE_PRINCIPAL_CLIENT_SECRET) {
+                        command += " --azservicePrincipalClientSecret ${AZ_SERVICE_PRINCIPAL_CLIENT_SECRET}"
+                    }
+                    if (env.AZ_SECRET_SPN) {
+                        command += " --azsecretSPN ${AZ_SECRET_SPN}"
+                    }
+                    if (env.AZ_SUBSCRIPTION_ID) {
+                        command += " --azsubscriptionID ${AZ_SUBSCRIPTION_ID}"
+                    }
+                    if (env.AVAMAR_SERVER_NAME) {
+                        command += " --avamarServerName ${AVAMAR_SERVER_NAME}"
+                    }
+                    if (env.DATADOMAIN_SERVER_NAME) {
+                        command += " --datadomainServerName ${DATADOMAIN_SERVER_NAME}"
+                    }
+                    if (env.CONTAINER_NAME) {
+                        command += " --containerName ${CONTAINER_NAME}"
+                    }
+                    if (env.AZ_CONTAINER_NAME) {
+                        command += " --azcontainerName ${AZ_CONTAINER_NAME}"
+                    }
+
+                    // Execute the constructed command
+                    sh command
+                }
+            }
+        }
+
+        stage('Display Setup Output') {
+            steps {
+                script {
+                    // Assuming the setup.sh script produces some output to a file
+                    sh 'cat /path/to/output/file || echo "No output file found"'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Archive the output, if any
+            archiveArtifacts artifacts: '/path/to/output/file', allowEmptyArchive: true
+        }
+        cleanup {
+            cleanWs()
+        }
+    }
+}

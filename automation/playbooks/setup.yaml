@@ -1,0 +1,55 @@
+- name: Deploy Container using setup.sh
+  hosts: all
+  become: false
+
+  vars:
+    additional_scripts:
+      - "common/functions.sh"
+    container_type: "postgresql"
+    source_image: "al"
+    source_image_version: "1.0"
+    target_image: "ansible"
+    container_installation_folder: "/dockerclient"
+    proxy: ""
+    az_resource_group: ""
+    az_tenant_id: ""
+    az_service_principal_client_id: ""
+    az_service_principal_client_secret: ""
+    az_secret_spn: ""
+    az_subscription_id: ""
+    avamar_server_name: ""
+    datadomain_server_name: ""
+    container_name: ""
+    az_container_name: ""
+
+  tasks:
+    - name: Ensure the setup script is executable
+      file:
+        path: "~/DellDPS-PaaS-Backup/setup.sh"
+        mode: '0755'
+
+    - name: Execute the setup.sh script
+      shell: >
+        ~/DellDPS-PaaS-Backup/setup.sh --containerType {{ container_type }}
+        --sourceImage {{ source_image }}
+        --sourceImageVersion {{ source_image_version }}
+        --targetImage {{ target_image }}
+        --containerInstallationFolder {{ container_installation_folder }}
+        {% if proxy != "" %} --proxy {{ proxy }} {% endif %}
+        {% if az_resource_group != "" %} --azresourceGroup {{ az_resource_group }} {% endif %}
+        {% if az_tenant_id != "" %} --aztenantId {{ az_tenant_id }} {% endif %}
+        {% if az_service_principal_client_id != "" %} --azservicePrincipalClientId {{ az_service_principal_client_id }} {% endif %}
+        {% if az_service_principal_client_secret != "" %} --azservicePrincipalClientSecret {{ az_service_principal_client_secret }} {% endif %}
+        {% if az_secret_spn != "" %} --azsecretSPN {{ az_secret_spn }} {% endif %}
+        {% if az_subscription_id != "" %} --azsubscriptionID {{ az_subscription_id }} {% endif %}
+        {% if avamar_server_name != "" %} --avamarServerName {{ avamar_server_name }} {% endif %}
+        {% if datadomain_server_name != "" %} --datadomainServerName {{ datadomain_server_name }} {% endif %}
+        {% if container_name != "" %} --containerName {{ container_name }} {% endif %}
+        {% if az_container_name != "" %} --azcontainerName {{ az_container_name }} {% endif %}
+      args:
+        chdir: ~/DellDPS-PaaS-Backup
+      register: setup_output
+
+    - name: Display the output of the setup.sh script
+      debug:
+        var: setup_output.stdout

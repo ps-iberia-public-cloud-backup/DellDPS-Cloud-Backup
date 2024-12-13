@@ -1,0 +1,39 @@
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0" # Example Amazon Linux 2 AMI
+  instance_type = "t2.micro"
+  key_name      = var.key_name
+
+  user_data = <<-EOF
+              #!/bin/bash
+              chmod +x /path/to/setup.sh
+
+              /path/to/setup.sh --containerType ${var.container_type} \
+              --sourceImage ${var.source_image} \
+              --sourceImageVersion ${var.source_image_version} \
+              --targetImage ${var.target_image} \
+              --containerInstallationFolder ${var.container_installation_folder} \
+              ${var.proxy != "" ? "--proxy ${var.proxy}" : ""} \
+              ${var.az_resource_group != "" ? "--azresourceGroup ${var.az_resource_group}" : ""} \
+              ${var.az_tenant_id != "" ? "--aztenantId ${var.az_tenant_id}" : ""} \
+              ${var.az_service_principal_client_id != "" ? "--azservicePrincipalClientId ${var.az_service_principal_client_id}" : ""} \
+              ${var.az_service_principal_client_secret != "" ? "--azservicePrincipalClientSecret ${var.az_service_principal_client_secret}" : ""} \
+              ${var.az_secret_spn != "" ? "--azsecretSPN ${var.az_secret_spn}" : ""} \
+              ${var.az_subscription_id != "" ? "--azsubscriptionID ${var.az_subscription_id}" : ""} \
+              ${var.avamar_server_name != "" ? "--avamarServerName ${var.avamar_server_name}" : ""} \
+              ${var.datadomain_server_name != "" ? "--datadomainServerName ${var.datadomain_server_name}" : ""} \
+              ${var.container_name != "" ? "--containerName ${var.container_name}" : ""} \
+              ${var.az_container_name != "" ? "--azcontainerName ${var.az_container_name}" : ""}
+              EOF
+              
+  tags = {
+    Name = "example-instance"
+  }
+}
+
+output "instance_ip" {
+  value = aws_instance.example.public_ip
+}

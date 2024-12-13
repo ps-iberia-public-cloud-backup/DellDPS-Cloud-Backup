@@ -1,0 +1,303 @@
+{
+  "version": "1.0.0",
+  "info": "The join_json_files of setup.sh joins the json files into this json file",
+  "cloudProvider": "azure",
+  "containerType": "blobstorage",
+  "keyVaultName": "akvpg",
+  "useKeyVaultSecureAccess": "NO",
+  "useTags": "NO",
+  "useFQDN": "YES",
+  "cloudConnection": {
+    "proxy": {
+      "useProxy": "NO",
+      "proxyHttpName": "http://127.0.0.1:3001",
+      "proxyHttpsName": "https://127.0.0.1:3001",
+      "noProxy": "*.test.example.com,.example2.com"
+    },
+    "certs": {
+      "useCerts": "NO",
+      "certFile": "ca-proxy_threatpulse_net"
+    },
+    "EndPoints": {
+      "useEndPoints": "NO",
+      "EndPoint": "xxx.xxx.xx.xx"
+    }
+  },
+  "azureLogin": {
+    "resourceGroup": "BackupPaaS",
+    "tenantId": "054bb9ef-86b1-4f4e-a843-deb19d532c11",
+    "ServicePrincipal": {
+      "useServicePrincipal": "YES",
+      "servicePrincipalClientId": "6ad30481-1ec1-43e3-b19d-4195da5451cf",
+      "KeyVaultyes": {
+        "loginKeyVaultName": "keyvaultstd01",
+        "secretSPN": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
+      },
+      "KeyVaultno": {
+        "servicePrincipalClientSecret": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
+      }
+    },
+    "ManagedIdentity": {
+      "useUserAssignedRManagedIdentity": "NO",
+      "ManageIdentityName": "ReaderSTD",
+      "useSystemAssignedManagedIdentity": "NO"
+    },
+    "Credentials": {
+      "useCredentials": "NO",
+      "userName": "",
+      "Password": ""
+    },
+    "subscription": {
+      "changeDefaultsubscription": "NO",
+      "subscriptionID": ""
+    }
+  },
+  "awsLogin": {
+    "accessKeyID": "",
+    "secretAccessKey": "",
+    "regionName": "",
+    "outputFormat": ""
+  },
+  "avamar": {
+    "useAvamar": "YES",
+    "avamarServerName": "avetest01.internal.cloudapp.net",
+    "avamarDomain": "clients",
+    "avamarClientPort": "2800x",
+    "installDir": "dockerclient",
+    "avamarVersion": "19.4",
+    "avamarRetention": "Bronze",
+    "apiUser": "PassUser",
+    "apiPassword": "*********"
+  },
+  "datadomain": {
+    "datadomainServerName": "ddvetest01.internal.cloudapp.net",
+    "mountType": "ddboostfs",
+    "RootBackupDir": "Backup",
+    "ddboosfs": {
+      "ddboostuser": "ddboost",
+      "storageUnit": "PaaSBackup",
+      "lockboxPass": "***********"
+    }
+  },
+  "container": {
+    "containerName": "systemd-blobcontainer2",
+    "podman": {
+      "info": "pidsLimit default is 2048. momeryLimit and swapLimit can be M (mebibytes), or G (gibibytes) or 0 to no limit.",
+      "pidsLimit": "32768",
+      "momeryLimit": "1g",
+      "swapLimit": "2g"
+    }
+  },
+  "azureResources": {
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "useAutoDiscover": "NO"
+  },
+  "backupTags": [
+    {
+      "type": "user",
+      "value": "bck_user"
+    },
+    {
+      "type": "port",
+      "value": "bck_port"
+    },
+    {
+      "type": "database",
+      "value": "bck_database"
+    },
+    {
+      "type": "task",
+      "value": "bck_task"
+    },
+    {
+      "type": "bsecret",
+      "value": "bck_bsecret"
+    },
+    {
+      "type": "bsecret",
+      "value": "bck_rsecret"
+    }
+  ],
+  "fixValues": [
+    {
+      "type": "user",
+      "value": "pgadmin"
+    },
+    {
+      "type": "port",
+      "value": "xxxxxx"
+    },
+    {
+      "type": "resource_list",
+      "value": "newrepotestserver01"
+    },
+    {
+      "type": "database",
+      "value": "ALL"
+    },
+    {
+      "type": "task",
+      "value": "redis"
+    },
+    {
+      "type": "bsecret",
+      "value": "newrepotestserver01"
+    },
+    {
+      "type": "rsecret",
+      "value": "r_secret"
+    }
+  ],
+  "postgresql": {
+    "info": "isFlexibleServer=YES requires Microsoft.DBforPostgreSQL/flexibleServers, isFlexibleServer=NO requires Microsoft.DBforPostgreSQL/server in azureResources.resourceType ",
+    "backupCommand": "backup_postgresql.sh",
+    "restoreCommand": "dbrestore.sh",
+    "useDumpall": "NO",
+    "useSnapshotToBackup": "NO",
+    "backupCreationScript": "YES",
+    "FlexibleServer": "YES"
+  },
+  "keyvault": {
+    "backupKeys": "YES",
+    "backupCommand": "backup_keyvault.sh",
+    "restoreCommand": "restore_keyvault.sh",
+    "secrets": {
+      "versionToStopBackup": "500",
+      "exclude": {
+        "vaults": "akv1, akv2",
+        "secrets": "secret1, secret2"
+      }
+    }
+  },
+  "atlas": {
+    "info": "This keyvault is used to list projects",
+    "backupCommand": "",
+    "restoreCommand": "",
+    "useAkvProject": "NO",
+    "akvProject": "akvProject",
+    "apiVersion": "https://cloud.mongodb.com/api/atlas/v1.0",
+    "listUser": "user-list-PROJECT",
+    "listSecret": "secret-list-PROJECT"
+  },
+  "minio": {
+    "AKSWorkerNodesVMBackup": "NO",
+    "backupCommand": "",
+    "restoreCommand": "",
+    "useBlobFuse": "NO",
+    "useS3fsFuse": "NO",
+    "useRclone": "YES",
+    "alias": "OnlinePlay",
+    "endPoint": "https://play.min.io",
+    "accessKey": "",
+    "secretKey": "",
+    "rcloneCache": "NO"
+  },
+  "purview": {
+    "backupCommand": "",
+    "restoreCommand": "",
+    "offset": {
+      "useOffsets": "NO",
+      "offsetValues": "0",
+      "limitValue": "1000"
+    },
+    "entityType1": "snowflake_schema",
+    "entityType2": "hive_db",
+    "entityType3": "snowflake_view",
+    "entityType4": "snowflake_table",
+    "attributeValue": "/PRE_SDH/",
+    "excludeCollections": "",
+    "relationshipTypes": "snowflake_schema_stages, snowflake_schema_views, snowflake_schema_tables, snowflake_schema_streams, snowflake_schema_tasks, snowflake_schema_pipes, snowflake_schema_sequences, snowflake_schema_stored_procedures, snowflake_schema_functions",
+    "curlClauses": {
+      "useMinExtInfo": "NO",
+      "apiVersion": {
+        "useApiVersion" : "NO",
+        "stableApiVersionValue": "2022-08-01-preview",
+        "specialApiVersionValue": "2022-07-01-preview"
+      }
+    },
+    "maxMemory": "5242880",
+    "curlDelay": "0.5",
+    "assetSplit": "25",
+    "exportTermsAsCSV": "YES",
+    "exportTermsAsJSON": "YES",
+    "linesReport": "10"
+  },
+  "deepclone": {
+    "backupCommand": "",
+    "restoreCommand": "",
+    "databrickInstance": "adb-3020338785281332.12.azuredatabricks.net",
+    "job_id": "967176282952806",
+    "notebook_params": {
+        "inputbck": "abfss://stagging@gscd1weustaoe2020crit023.dfs.core.windows.net/corp/00083/onefcc/alert_tm1_00083/ALERT_TM1_00083/",
+        "outputbck": "wasbs://ingests@gscd1weustaoe2020crit019.blob.core.windows.net/test_backup_delta/",
+        "inputrst": "wasbs://ingests@gscd1weustaoe2020crit019.blob.core.windows.net/test_backup_delta/",
+        "outputrst": "abfss://stagging@gscd1weustaoe2020crit023.dfs.core.windows.net/corp/00083/onefcc/alert_tm1_00083_bktest_restore/ALERT_TM1_00083_bktest_restore/"
+    },
+    "delay": "60"
+  },
+  "azureBlob": {
+    "includeContainers": "",
+    "excludeContainers": "",
+    "backupCommand": "prebck-blobstorage.sh",
+    "restoreCommand": "preres-blobstorage.sh",
+    "useBlobFuse": "YES",
+    "blobfuse": {
+      "version": "2",
+      "mountAll": "YES",
+      "useKeys": "NO",
+      "RBACAccess": {
+        "useServicePrincipal": "YES",
+        "useManagerServiceIdentity": "NO"
+        },
+      "blockCacheTunning": "block-size-mb: 16, mem-size-mb: 2048, disk-size-mb: 4192, disk-timeout-sec: 60, prefetch: 128, parallelism: 16"
+    },
+    "azcopy": {
+      "source_storage": "gscp1weustaoe2020crit140",
+      "source_container": "default",
+      "source_container_exclude":"",
+      "source_RSG": "gscp1weursgoe2020crit003",
+      "source_suscription": "gscp1glbsubgeneriglob001",
+      "destination_storage": "gscp1weustabckpspcrit101",
+      "destination_container": "backup-azcopy-pro",
+      "destination_RSG": "gscp1weursgbckpspcrit001",
+      "destination_suscription": "gscp1glbsubptfhubnthb001"
+    },
+    "useRclone": "NO",
+      "rclone": {
+      "rcloneCache": "NO"
+    },
+    "keyvault": {
+      "backupCommand": "",
+      "restoreCommand": "",
+      "backupKeys": "YES",
+      "secrets": {
+        "exclude": {
+          "vault01": "VaultAKS01",
+          "VaultAKS01_secrets": "secret1, secret4",
+          "vault02": "VaultAKS02",
+          "VaultAKS02_secrets": "secret1, secret3",
+          "vault03": "",
+          "vault03_secrets": "",
+          "vault04": "",
+          "vault04_secrets": "",
+          "vault05": "",
+          "vault05_secrets": "",
+          "vault06": "",
+          "vault06_secrets": "",
+          "vault07": "",
+          "vault07_secrets": "",
+          "vault08": "",
+          "vault08_secrets": "",
+          "vault09": "",
+          "vault09_secrets": "",
+          "vault10": "",
+          "vault10_secrets": ""
+        }
+      }
+    },
+    "mysql": {
+      "info": "isFlexibleServer=YES requires Microsoft.DBforMySQL/flexibleServers, isFlexibleServer=NO requires Microsoft.DBforMySQL/servers in azureResources.resourceType ",
+      "FlexibleServer": "NO"
+    }
+  }
+}

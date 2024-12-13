@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "cloudConnection": {
+    "proxy": {
+      "useProxy": "YES",
+      "proxyHttpName": "http://proxy.sig.umbrella.com:443",
+      "proxyHttpsName": "http://proxy.sig.umbrella.com:443",
+      "noProxy": "cloudcenter.corp,localhost,.corp,.vault.azure.net,blob.core.windows.net,169.254.169.254"
+    },
+    "certs": {
+      "useCerts": "YES",
+      "certFile": "Cisco_Umbrella_Root_CA.cer"
+    },
+    "EndPoints": {
+      "useEndPoints": "NO",
+      "EndPoint": "xxx.xxx.xx.xx"
+    }
+  }
+}
