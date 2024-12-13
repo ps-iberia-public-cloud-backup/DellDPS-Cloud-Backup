@@ -10,7 +10,6 @@
   "container": {
     "containerName": "systemd-blobcontainer2",
     "podman": {
-      "info": "pidsLimit default is 2048. momeryLimit and swapLimit can be M (mebibytes), or G (gibibytes) or 0 to no limit.",
       "pidsLimit": "32768",
       "momeryLimit": "1g",
       "swapLimit": "2g"

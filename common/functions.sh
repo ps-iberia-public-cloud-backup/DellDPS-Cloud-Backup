@@ -400,21 +400,21 @@ colors() {
 
 join_json_files() {
 
-  local dockertype=$1
-
   if [ ! -f ${jsonfiles}/dps-setup.json ]; then
 
-    echo Missing dps-setup.json file in folder ${jsonfiles}. Trying to create a new one from dps-setup-app.json, dps-setup-coms.json and dps-setup-ave-ddve.json files.
+    echo Missing dps-setup.json file in folder ${jsonfiles}. Trying to create a new one from dps-setup-*.json files.
 
-    if [ ! -d ${jsonfiles} ]; then mkdir ${jsonfiles}; echo -e "${RED}There are no JSON files in ${jsonfiles} folder${NC}" ; exit 1; fi
-    if [[ ( ! -f ${jsonfiles}/dps-setup-app.json ) ]]; then echo -e "${RED}Json file dps-setup-app.json missing on ${jsonfiles} folder${NC}" ; exit 1; fi
-    if [[ ( ! -f ${jsonfiles}/dps-setup-ave-ddve.json ) ]]; then echo -e "${RED}Json file dps-setup-ave-ddve.json missing on ${jsonfiles} folder${NC}" ; exit 1; fi
-    if [[ ( ! -f ${jsonfiles}/dps-setup-coms.json ) ]]; then echo -e "${RED}Json file dps-setup-coms.json missing on ${jsonfiles} folder${NC}" ; exit 1; fi
+    # Check if any required JSON files are missing
+    for file in $(ls -1 ${jsonfiles}/dps-setup*.json); do
+        if [[ ! -f "${file}" ]]; then
+            echo -e "${RED}Json file ${file} missing in ${jsonfiles} folder${NC}"
+            exit 1
+        fi
+    done
 
-    jq  --arg type "$DOCKER_TYPE" --arg cloudprovider "$CLOUD_PROVIDER" '.containerType = $type | .cloudProvider = $cloudprovider' ${jsonfiles}/dps-setup-app.json > ${jsonfiles}/dps-setup-$DOCKER_TYPE.json
-    jq -s '.[0] * .[1] * .[2] * .[3]' ${jsonfiles}/dps-setup-coms.json ${jsonfiles}/dps-setup-$CLOUD_PROVIDER.json ${jsonfiles}/dps-setup-ave-ddve.json ${jsonfiles}/dps-setup-$DOCKER_TYPE.json > dps-setup.json
-    mv -f ${jsonfiles}/dps-setup-$DOCKER_TYPE.json ${jsonfiles}/dps-setup-app.json
-  
+    # Combine all JSON files in the folder matching the pattern dps-setup*.json
+    jq -s 'reduce .[] as $item ({}; . * $item)' ${jsonfiles}/dps-setup*.json > ${jsonfiles}/dps-setup.json
+ 
   else
 
     echo File dps-setup.json already exists in folder ${jsonfiles}. This will be used

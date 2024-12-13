@@ -7,90 +7,13 @@
   "useKeyVaultSecureAccess": "NO",
   "useTags": "NO",
   "useFQDN": "YES",
-  "cloudConnection": {
-    "proxy": {
-      "useProxy": "NO",
-      "proxyHttpName": "http://127.0.0.1:3001",
-      "proxyHttpsName": "https://127.0.0.1:3001",
-      "noProxy": "*.test.example.com,.example2.com"
-    },
-    "certs": {
-      "useCerts": "NO",
-      "certFile": "ca-proxy_threatpulse_net"
-    },
-    "EndPoints": {
-      "useEndPoints": "NO",
-      "EndPoint": "xxx.xxx.xx.xx"
-    }
-  },
-  "azureLogin": {
-    "resourceGroup": "BackupPaaS",
-    "tenantId": "054bb9ef-86b1-4f4e-a843-deb19d532c11",
-    "ServicePrincipal": {
-      "useServicePrincipal": "YES",
-      "servicePrincipalClientId": "6ad30481-1ec1-43e3-b19d-4195da5451cf",
-      "KeyVaultyes": {
-        "loginKeyVaultName": "keyvaultstd01",
-        "secretSPN": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
-      },
-      "KeyVaultno": {
-        "servicePrincipalClientSecret": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
-      }
-    },
-    "ManagedIdentity": {
-      "useUserAssignedRManagedIdentity": "NO",
-      "ManageIdentityName": "ReaderSTD",
-      "useSystemAssignedManagedIdentity": "NO"
-    },
-    "Credentials": {
-      "useCredentials": "NO",
-      "userName": "",
-      "Password": ""
-    },
-    "subscription": {
-      "changeDefaultsubscription": "NO",
-      "subscriptionID": ""
-    }
-  },
-  "awsLogin": {
-    "accessKeyID": "",
-    "secretAccessKey": "",
-    "regionName": "",
-    "outputFormat": ""
-  },
-  "avamar": {
-    "useAvamar": "YES",
-    "avamarServerName": "avetest01.internal.cloudapp.net",
-    "avamarDomain": "clients",
-    "avamarClientPort": "2800x",
-    "installDir": "dockerclient",
-    "avamarVersion": "19.4",
-    "avamarRetention": "Bronze",
-    "apiUser": "PassUser",
-    "apiPassword": "*********"
-  },
-  "datadomain": {
-    "datadomainServerName": "ddvetest01.internal.cloudapp.net",
-    "mountType": "ddboostfs",
-    "RootBackupDir": "Backup",
-    "ddboosfs": {
-      "ddboostuser": "ddboost",
-      "storageUnit": "PaaSBackup",
-      "lockboxPass": "***********"
-    }
-  },
   "container": {
     "containerName": "systemd-blobcontainer2",
     "podman": {
-      "info": "pidsLimit default is 2048. momeryLimit and swapLimit can be M (mebibytes), or G (gibibytes) or 0 to no limit.",
       "pidsLimit": "32768",
       "momeryLimit": "1g",
       "swapLimit": "2g"
     }
-  },
-  "azureResources": {
-    "resourceType": "Microsoft.CognitiveServices/accounts",
-    "useAutoDiscover": "NO"
   },
   "backupTags": [
     {
@@ -210,7 +133,7 @@
     "curlClauses": {
       "useMinExtInfo": "NO",
       "apiVersion": {
-        "useApiVersion" : "NO",
+        "useApiVersion": "NO",
         "stableApiVersionValue": "2022-08-01-preview",
         "specialApiVersionValue": "2022-07-01-preview"
       }
@@ -228,10 +151,10 @@
     "databrickInstance": "adb-3020338785281332.12.azuredatabricks.net",
     "job_id": "967176282952806",
     "notebook_params": {
-        "inputbck": "abfss://stagging@gscd1weustaoe2020crit023.dfs.core.windows.net/corp/00083/onefcc/alert_tm1_00083/ALERT_TM1_00083/",
-        "outputbck": "wasbs://ingests@gscd1weustaoe2020crit019.blob.core.windows.net/test_backup_delta/",
-        "inputrst": "wasbs://ingests@gscd1weustaoe2020crit019.blob.core.windows.net/test_backup_delta/",
-        "outputrst": "abfss://stagging@gscd1weustaoe2020crit023.dfs.core.windows.net/corp/00083/onefcc/alert_tm1_00083_bktest_restore/ALERT_TM1_00083_bktest_restore/"
+      "inputbck": "abfss://stagging@gscd1weustaoe2020crit023.dfs.core.windows.net/corp/00083/onefcc/alert_tm1_00083/ALERT_TM1_00083/",
+      "outputbck": "wasbs://ingests@gscd1weustaoe2020crit019.blob.core.windows.net/test_backup_delta/",
+      "inputrst": "wasbs://ingests@gscd1weustaoe2020crit019.blob.core.windows.net/test_backup_delta/",
+      "outputrst": "abfss://stagging@gscd1weustaoe2020crit023.dfs.core.windows.net/corp/00083/onefcc/alert_tm1_00083_bktest_restore/ALERT_TM1_00083_bktest_restore/"
     },
     "delay": "60"
   },
@@ -248,13 +171,13 @@
       "RBACAccess": {
         "useServicePrincipal": "YES",
         "useManagerServiceIdentity": "NO"
-        },
+      },
       "blockCacheTunning": "block-size-mb: 16, mem-size-mb: 2048, disk-size-mb: 4192, disk-timeout-sec: 60, prefetch: 128, parallelism: 16"
     },
     "azcopy": {
       "source_storage": "gscp1weustaoe2020crit140",
       "source_container": "default",
-      "source_container_exclude":"",
+      "source_container_exclude": "",
       "source_RSG": "gscp1weursgoe2020crit003",
       "source_suscription": "gscp1glbsubgeneriglob001",
       "destination_storage": "gscp1weustabckpspcrit101",
@@ -263,7 +186,7 @@
       "destination_suscription": "gscp1glbsubptfhubnthb001"
     },
     "useRclone": "NO",
-      "rclone": {
+    "rclone": {
       "rcloneCache": "NO"
     },
     "keyvault": {
@@ -298,6 +221,83 @@
     "mysql": {
       "info": "isFlexibleServer=YES requires Microsoft.DBforMySQL/flexibleServers, isFlexibleServer=NO requires Microsoft.DBforMySQL/servers in azureResources.resourceType ",
       "FlexibleServer": "NO"
+    }
+  },
+  "avamar": {
+    "useAvamar": "YES",
+    "avamarServerName": "avamar-001.corp",
+    "avamarDrServerName": "avamar-002.corp",
+    "avamarDomain": "EDP/TTTT/PAAS",
+    "avamarClientPort": "28008",
+    "installDir": "dockerclient",
+    "avamarVersion": "19.4",
+    "avamarRetention": "Bronze",
+    "apiUser": "PaaSuser",
+    "apiPassword": "******************"
+  },
+  "datadomain": {
+    "datadomainServerName": "datadomain-001.corp",
+    "mountType": "local",
+    "datadomain_datadomain_RootBackupDir": "Backup",
+    "ddboosfs": {
+      "ddboostuser": "PaaSuser",
+      "storageUnit": "xxxPaaS_backups",
+      "lockboxPass": "4*****************"
+    }
+  },
+  "awsLogin": {
+    "accessKeyID": "",
+    "secretAccessKey": "",
+    "regionName": "",
+    "outputFormat": ""
+  },
+  "azureLogin": {
+    "resourceGroup": "BackupPaaS",
+    "tenantId": "054bb9ef-86b1-4f4e-a843-deb19d532c11",
+    "ServicePrincipal": {
+      "useServicePrincipal": "YES",
+      "servicePrincipalClientId": "6ad30481-1ec1-43e3-b19d-4195da5451cf",
+      "KeyVaultyes": {
+        "loginKeyVaultName": "keyvaultstd01",
+        "secretSPN": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
+      },
+      "KeyVaultno": {
+        "servicePrincipalClientSecret": "UFz8Q~OUzO9.l3WD6Twv4ocSQ_d3OU_kd1npSb67"
+      }
+    },
+    "ManagedIdentity": {
+      "useUserAssignedRManagedIdentity": "NO",
+      "ManageIdentityName": "ReaderSTD",
+      "useSystemAssignedManagedIdentity": "NO"
+    },
+    "Credentials": {
+      "useCredentials": "NO",
+      "userName": "",
+      "Password": ""
+    },
+    "subscription": {
+      "changeDefaultsubscription": "NO",
+      "subscriptionID": ""
+    },
+    "azureResources": {
+      "resourceType": "Microsoft.CognitiveServices/accounts",
+      "useAutoDiscover": "NO"
+    }
+  },
+  "cloudConnection": {
+    "proxy": {
+      "useProxy": "YES",
+      "proxyHttpName": "http://proxy.sig.umbrella.com:443",
+      "proxyHttpsName": "http://proxy.sig.umbrella.com:443",
+      "noProxy": "cloudcenter.corp,localhost,.corp,.vault.azure.net,blob.core.windows.net,169.254.169.254"
+    },
+    "certs": {
+      "useCerts": "YES",
+      "certFile": "Cisco_Umbrella_Root_CA.cer"
+    },
+    "EndPoints": {
+      "useEndPoints": "NO",
+      "EndPoint": "xxx.xxx.xx.xx"
     }
   }
 }
