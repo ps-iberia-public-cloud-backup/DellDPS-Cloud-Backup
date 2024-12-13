@@ -2,13 +2,13 @@
   "version": "1.0.0",
   "info": "The join_json_files of setup.sh joins the json files into this json file",
   "cloudProvider": "azure",
-  "containerType": "blobstorage",
+  "containerType": "azureBlob",
   "keyVaultName": "akvpg",
   "useKeyVaultSecureAccess": "NO",
   "useTags": "NO",
   "useFQDN": "YES",
   "container": {
-    "containerName": "systemd-blobcontainer2",
+    "containerName": "systemd-blobcontainer",
     "podman": {
       "pidsLimit": "32768",
       "momeryLimit": "1g",

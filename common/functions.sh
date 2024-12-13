@@ -262,7 +262,7 @@ prebuild() {
       
   if [ $cloudConnection_certs_useCerts == "YES" ]; then                                                       # If certificates are used
     echo "#Certs configs" >> Dockerfile
-    echo "COPY src/packages/DockerEmbebed/Certificates/$CERTFILE /etc/pki/ca-trust/source/anchors/" >> $dockerfile
+    echo "COPY certificates/$cloudConnection_certs_certFile /etc/pki/ca-trust/source/anchors/" >> $dockerfile
     echo "RUN update-ca-trust" >> $dockerfile
   fi
 

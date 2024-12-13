@@ -1,4 +1,4 @@
-containerType,adls,atlas,azsql,blobstorage,cosmosmg,cosmosql,cvision,databricks,datafactory,deelclone,eventhub,filestorage,hdinsigth,keyvault,kafka,mariadb,minio,netapp,purview,redis,postgresql,S3,elasticsearch,redis,cloudstorage,mysql,deepclone,azcopy
+containerType,adls,atlas,azsql,azureBlob,cosmosmg,cosmosql,cvision,databricks,datafactory,deelclone,eventhub,filestorage,hdinsigth,keyvault,kafka,mariadb,minio,netapp,purview,redis,postgresql,S3,elasticsearch,redis,cloudstorage,mysql,deepclone,azcopy
 cloudProvider,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,azure,aws,aws,aws,gcp,azure,azure,azure
 useDDBoost,no,yes,yes,no,yes,yes,yes,no,yes,no,no,no,no,yes,yes,yes,no,no,no,yes,yes,no,no,no,no,yes,no,no
 useBlobFuse,yes,no,no,yes,no,no,no,yes,no,no,yes,no,yes,no,no,no,yes,no,no,yes,no,yes ,yes ,yes ,yes,no,no,no
