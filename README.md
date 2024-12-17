@@ -21,17 +21,13 @@ The project creates customized container images specifically designed for Cloud 
 
 ## Features
 
-Each container images contains these features:
+Each container image contains these features:
 
-**Cloud Login:** Authenticates either through a Command Line Interface (CLI), an API-based login, or via an Identity Management System, ensuring secure and flexible access options.
+**Cloud Login**: Supports CLI, API, or Identity Management System authentication.
 
-**Assets Discovery:** Enables efficient asset discovery through methods such as tagging, parameter lookup, or other identification parameters, allowing for precise and organized management of cloud resources.
+**Assets Discover**y: Efficient asset discovery using tagging and parameter lookup.
 
-**Data Extraction:** Supports multiple data extraction methods, including API posts for direct data transfer, exporting data for external use, or performing a full data dump, depending on the specific requirements of the operation.
-
-**Data Transfer:** Data can be transferred using an API get request for retrieval, an API post for sending data, or through legacy plugins or agents that facilitate interaction with older systems.
-
-**Backup Silo:** The backup process is governed by customizable schedules and policies, ensuring data is securely backed up into designated repositories, preserving the integrity and availability of critical information.
+**Data Extraction**: Multiple methods are available for data extraction.
 
 ## Getting Started
 
